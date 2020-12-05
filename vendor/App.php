@@ -7,7 +7,6 @@ include_once ("Request.php");
 
 class App
 {
-
     public static function run()
     {
         self::loadModels();
