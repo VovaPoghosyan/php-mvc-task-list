@@ -18,8 +18,7 @@ class Model
 
     private function connect()
     {
-        $config     = parse_ini_file(CONFIG."app.ini");
-        $connection = new Db($config['DBHost'], $config['DBPort'], $config['DBName'], $config['DBUser'], $config['DBPassword']);
+        $connection = new Db(APP['DBHost'], APP['DBPort'], APP['DBName'], APP['DBUser'], APP['DBPassword']);
         return $connection;
     }
 

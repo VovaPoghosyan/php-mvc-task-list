@@ -1,0 +1,1 @@
+<div class="body">Welcome to index action</div>
