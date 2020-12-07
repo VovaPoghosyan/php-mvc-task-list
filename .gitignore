@@ -1,2 +1,3 @@
 /.ida
 config/app.ini
+vendor/PDO/logs

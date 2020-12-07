@@ -5,7 +5,7 @@ include_once("Model.php");
 include_once("Session.php");
 include_once("Request.php");
 include_once("Route.php");
-include_once("../routes/api.php");
+include_once("../routes/web.php");
 
 class App
 {

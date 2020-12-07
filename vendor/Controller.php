@@ -9,6 +9,7 @@ class Controller
     {
         $url_string = APP['SiteURL'] . $url;
         header("Location:$url_string");
+        exit();
     }
 
     public function render($view, $params = array())
