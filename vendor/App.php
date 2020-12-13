@@ -26,6 +26,11 @@ class App
         }
     }
 
+    public static function baseUrl($url)
+    {
+        return APP['SiteURL'] . $url;
+    }
+
     # test for injection;
     public static function test_input($data)
     {

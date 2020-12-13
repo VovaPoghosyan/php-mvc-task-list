@@ -1,0 +1,228 @@
+@import '../fonts/font.css';
+@import './normalize.css';
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    height: 90px;
+    z-index: 1;
+    padding-right: 32px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 10px rgba(230, 110, 0, 0.25);
+}
+
+.header-logo {
+    width: 90px;
+    height: 90px;
+}
+
+.login-reg-links a + a {
+    margin-left: 16px;
+}
+
+.sign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in {
+    height: 100vh;
+}
+
+.sign-up {
+    padding: 114px 24px;
+}
+
+.sign-block {
+    max-width: 352px;
+    width: 100%;
+    padding: 24px 48px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+.sign-up .sign-block {
+    max-width: 560px;
+}
+
+.logo {
+    width: 120px;
+    height: 95px;
+    margin: auto;
+}
+
+.logo a img {
+    width: 100%;
+    height: 100%;
+}
+
+.block-title {
+    padding: 16px 0;
+}
+
+.block-title h3 {
+    font-size: 24px;
+    font-family: 'WeblysleekUI';
+    font-weight: 400;
+    color: #313131;
+    padding-bottom: 8px;
+}
+
+.link {
+    font-family: 'WeblysleekUI';
+    font-weight: 400;
+}
+
+.link a {
+    color: #0074B6;
+}
+
+.form-item {
+    font-family: 'WeblysleekUI';
+    font-weight: 400;
+    padding: 16px 0;
+    position: relative;
+}
+
+.form-item input {
+    border-bottom: 1px solid #808080;
+    width: 100%;
+    margin-left: 0;
+}
+
+.form-item input:hover,
+.form-item input:focus {
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #3D3D95, #d46191);
+    border-color: unset;
+    border-right-width: 0 !important;
+}
+
+.form-item input~.input-area-placeholder {
+    font-size: 16px;
+    font-family: 'WeblysleekUI';
+    font-weight: 400;
+    position: absolute;
+    top: 16px;
+    left: 0;
+    pointer-events: none !important;
+    color: #808080;
+    position: absolute;
+    transition: .3s;
+
+}
+
+.form-item input:focus~.input-area-placeholder,
+.form-item input:active~.input-area-placeholder,
+.form-item input.active~.input-area-placeholder{
+    font-size: 14px;
+    font-family: 'WeblysleekUI-bold';
+    font-weight: 600;
+    color: #3D3D95;
+    transform: translateY(-50%);
+    top: 13px;
+}
+
+.form-item .submit-btn {
+    width: 100%;
+    height: 40px;
+    padding: 1px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #3D3D95, #d46191);
+    box-shadow: 0px 2px 10px rgba(230, 110, 0, 0.25);
+} 
+
+.form-item .submit-btn button {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 4px;
+    border: 0;
+    background: #ffffff;
+}
+
+.form-item .submit-btn button span {
+    font-size: 18px;
+    font-family: 'WeblysleekUI-bold';
+    font-weight: 600;
+    background: linear-gradient(to right, #3D3D95, #d46191);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.forgot-psw {
+    text-align: center;
+}
+
+.forgot-psw a {
+    font-size: 15px;
+    color: #0074B6;
+}
+
+.form-item.check-gender {
+    padding: 8px 0;
+}
+
+.form-item.check-gender p {
+    padding-bottom: 16px;
+}
+
+.gender-label {
+    display: block;
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.2;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.gender-label input {
+    display: none;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.gender-label:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+.gender-label input:checked~.checkmark {
+    background-color: #3D3D95;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.gender-label input:checked~.checkmark:after {
+    display: block;
+}
+
+.gender-label .checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}

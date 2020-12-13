@@ -1,12 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Task List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="<?php echo App::baseUrl("css/style.css") ?>">
+    <link rel="stylesheet" href="<?php echo App::baseUrl("css/responsive.css") ?>">
 </head>
+
 <body>
-    <div class="container main">
-        <?php echo $content; ?>
-    </div>
+    <header>
+        <div class="header-logo">
+            <a href="#"><img src="<?php echo App::baseUrl("assets/logo.png") ?>" alt="logo"></a>
+        </div>
+        <div class="login-reg-links">
+            <a href="/login">Login</a>
+            <a href="/registration">Register</a>
+        </div>
+    </header>
+    <?php echo $content; ?>
+    <script src="<?php echo App::baseUrl("js/jquery/jquery-3.2.1.min.js") ?>"></script>
+    <script src="<?php echo App::baseUrl("js/script.js") ?>"></script>
 </body>
+
 </html>

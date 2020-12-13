@@ -5,7 +5,6 @@ class AuthController extends Controller
 
     public function showRegistrationAction()
     {
-        $this->layout = "auth";
         $this->render("auth/registration");
     }
 
@@ -84,7 +83,6 @@ class AuthController extends Controller
 
     public function showLoginAction()
     {
-        $this->layout = "auth";
         $this->render("auth/login");
     }
 
@@ -118,6 +116,9 @@ class AuthController extends Controller
                     }
                 }
             }
+            Session::set("old_values", [
+                "email" => $email,
+            ]);
             $this->redirect("login");
         } else {
             $this->redirect("profile");

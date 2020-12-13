@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'WeblysleekUI';
+    src: url("./weblysleekuisl.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'WeblysleekUI-bold';
+    src: url("./weblysleekuisb.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}

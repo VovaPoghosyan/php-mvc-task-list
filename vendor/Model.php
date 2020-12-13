@@ -141,25 +141,6 @@ class Model
         }
     }
 
-    public function fetch()
-    {
-        $response = $this->query();
-        if (!$response) {
-            throw new Exception("Database Error [{$this->database->errno}] {$this->database->error}");
-        }
-        return $response;
-    }
-
-    public function fetchAll()
-    {
-        $data       = [];
-        $response   = $this->query();
-        while ($row = $response) {
-            $data[] = $row;
-        }
-        return $data;
-    }
-
     public function limit($pageSize, $offset = 0)
     {
         $this->sqlString .= " LIMIT $offset, $pageSize";
