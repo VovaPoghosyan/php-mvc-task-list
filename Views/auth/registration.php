@@ -3,7 +3,7 @@
         <div class="sign-block">
             <div class="logo">
                 <a href="#">
-                    <img src='./assets/logo.png' alt="logo" />
+                    <img src="<?php echo App::baseUrl('/assets/logo.png') ?>" alt="logo" />
                 </a>
             </div>
             <div class="block-title">
@@ -18,18 +18,18 @@
                 
                 <form name="basic" action="/registration" method="POST">
                     <div class="form-item">
-                        <input type="text" name="firstname">
+                        <input type="text" name="firstname" value="<?php echo isset($old["firstname"]) ? $old["firstname"] : '' ?>">
                         <span class="input-area-placeholder">Firstname</span>
                         <span class="error"><?php echo isset($error["firstname"]) ? $error["firstname"] : "" ?></span>
                         
                     </div>
                     <div class="form-item">
-                        <input type="text">
-                        <span class="input-area-placeholder" name="lastname">Lastname</span>
+                        <input type="text" name="lastname" value="<?php echo isset($old["lastname"]) ? $old["lastname"] : '' ?>">
+                        <span class="input-area-placeholder">Lastname</span>
                         <span class="error"><?php echo isset($error["lastname"]) ? $error["lastname"] : "" ?></span>
                     </div>
                     <div class="form-item">
-                        <input type="email" name="email">
+                        <input type="email" name="email" value="<?php echo isset($old["email"]) ? $old["email"] : '' ?>">
                         <span class="input-area-placeholder">Email</span>
                         <span class="error"><?php echo isset($error["email"]) ? $error["email"] : "" ?></span>
                     </div>
@@ -46,11 +46,11 @@
                     <div class="form-item check-gender">
                         <p>Please select your gender:</p>
                         <label class="gender-label">Male
-                            <input type="radio" checked="checked" name="gender">
+                            <input type="radio" checked="checked" value="MALE" name="gender" checked>
                             <span class="checkmark"></span>
                         </label>
                         <label class="gender-label">Female
-                            <input type="radio" name="gender">
+                            <input type="radio" value="FAMALE" name="gender" <?php echo isset($old["gender"]) && $old["gender"] == "FAMALE" ? 'checked' : '' ?>>
                             <span class="checkmark"></span>
                         </label>
                     </div>

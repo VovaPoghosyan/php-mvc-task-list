@@ -7,7 +7,11 @@ class AuthController extends Controller
     {
         $this->checkErrorTime();
         $errorMessages = Session::get("error_messages");
-        $this->render("auth/registration", ['error' => $errorMessages ? $errorMessages : []]);
+        $old = Session::get("old_values") ? Session::get("old_values") : [];
+        $this->render("auth/registration", [
+            'old'   => $old,
+            'error' => $errorMessages ? $errorMessages : []
+        ]);
     }
 
     public function registrationAction()
@@ -68,6 +72,12 @@ class AuthController extends Controller
                     die(mysqli_errno(User::getConn()));
                 }
             } else {
+                Session::set("old_values", [
+                    "firstname" => $firstname,
+                    "lastname"  => $lastname,
+                    "email"     => $email,
+                    "gender"    => $gender
+                ]);
                 return $this->redirect("registration");
             }
         } else {
@@ -79,7 +89,11 @@ class AuthController extends Controller
     {
         $this->checkErrorTime();
         $errorMessages = Session::get("error_messages");
-        $this->render("auth/login", ['error' => $errorMessages ? $errorMessages : []]);
+        $old = Session::get("old_values") ? Session::get("old_values") : [];
+        $this->render("auth/login", [
+            'old'   => $old,
+            'error' => $errorMessages ? $errorMessages : []
+        ]);
     }
 
     public function loginAction()
@@ -104,6 +118,7 @@ class AuthController extends Controller
                 $currentUser = $user->get(false, ["id", "password"])->simple(["email" => $email])->query();
                 if (count($currentUser)) {
                     if (password_verify($password, $currentUser[0]['password'])) {
+                        die($currentUser['id']);
                         Session::set("userId", $currentUser['id']);
                         $this->redirect("profile");
                     } else {

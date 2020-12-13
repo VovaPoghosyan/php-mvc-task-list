@@ -2,7 +2,7 @@
     <div class="sign sign-in d_flex a_items_center j_content_center">
         <div class="sign-block">
             <div class="logo">
-                <a href="#"><img src='./assets/logo.png' alt="logo" /></a>
+                <a href="#"><img src="<?php echo App::baseUrl('/assets/logo.png') ?>" alt="logo" /></a>
             </div>
             <div class="block-title">
                 <h3>Sign in</h3>
@@ -15,7 +15,7 @@
             <div class="form">
                 <form name="basic" action="/login" method="POST">
                     <div class="form-item">
-                        <input type="email" name="email">
+                        <input type="email" name="email" value="<?php echo isset($old["email"]) ? $old["email"] : '' ?>">
                         <span class="input-area-placeholder">Username</span>
                         <span class="error"><?php echo isset($error["email"]) ? $error["email"] : "" ?></span>
                     </div>

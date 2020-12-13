@@ -5,22 +5,21 @@ class TaskController extends Controller
     public function getAllTasksAction()
     {
         $task  = new Task();
-        $tasks = $task->get(false, ["title", "description", "created_by", "done"]);
+        $tasks = $task->get(false, ["title", "description", "created_by", "done"])->query();
 
         $this->render("tasks/index", ['tasks' => $tasks]);
     }
 
     public function showCreateTaskAction()
     {
-        die('///');
-        // $task        = new Task();
-        // $currentTask = $task->get(false, ["title", "description", "created_by", "done"])->simple(['id' => $id]);
-
-        $this->render("tasks/form");
+        $this->render("tasks/form", ['create' => true]);
     }
 
     public function createTaskAction()
     {
+        echo '<pre>';
+        var_dump(Session::get('userId'));
+        die('///');
         $task = new Task();
         if ($id = Session::get('userId')) {
             $user        = new User();
