@@ -12,11 +12,12 @@ class Controller
         exit();
     }
 
-    public function checkErrorTime()
+    public function checkSessionTime($key = "message", $type = "error")
     {
-        $messageTime = Session::get("message_time");
-        if($messageTime && $messageTime + 1 < time()) {
-            Session::set("error_messages", []);
+        $sessionTime = Session::get($key . "_time");
+        if($sessionTime && $sessionTime + 1 < time()) {
+            die('////');
+            Session::set($type . "_" . $key, []);
         }
     }
 

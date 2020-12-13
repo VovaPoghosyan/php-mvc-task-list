@@ -5,7 +5,7 @@ class AuthController extends Controller
 
     public function showRegistrationAction()
     {
-        $this->checkErrorTime();
+        $this->checkSessionTime();
         $errorMessages = Session::get("error_messages");
         $old = Session::get("old_values") ? Session::get("old_values") : [];
         $this->render("auth/registration", [
@@ -86,7 +86,7 @@ class AuthController extends Controller
 
     public function showLoginAction()
     {
-        $this->checkErrorTime();
+        $this->checkSessionTime();
         $errorMessages = Session::get("error_messages");
         $old = Session::get("old_values") ? Session::get("old_values") : [];
         $this->render("auth/login", [

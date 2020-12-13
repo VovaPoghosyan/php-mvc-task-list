@@ -19,7 +19,7 @@ header {
     height: 90px;
 }
 
-.login-reg-links a + a {
+.login-reg-links a+a {
     margin-left: 16px;
 }
 
@@ -231,4 +231,105 @@ header {
     height: 8px;
     border-radius: 50%;
     background: white;
+}
+
+/* Task List Page */
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: -12px 0;
+}
+
+.task-block {
+    max-width: 552px;
+    width: 100%;
+    padding: 12px 0;
+}
+
+.task-block-cnt {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 48px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.task-title-desc .title {
+    font-size: 24px;
+    font-family: 'WeblysleekUI-bold';
+    font-weight: 600;
+}
+
+.task-title-desc .description {
+    font-size: 16px;
+    font-family: 'WeblysleekUI-light';
+    font-weight: 300;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.priority-status {
+    width: 100%;
+    height: 24px;
+    display: block;
+    padding: 0 16px;
+    color: #ffffff;
+    background: linear-gradient(to right, #3D3D95, #d46191);
+    box-shadow: 0px 2px 10px rgba(230, 110, 0, 0.25);
+    border-radius: 4px;
+}
+
+.priority-status + .priority-status {
+    margin-top: 10px;
+}
+
+.priority-status option {
+    background-color: black;
+}
+
+.priority-status.status {
+    background: linear-gradient(to right, #d46191, #3D3D95)
+}
+
+.edit-delete {
+    position: absolute;
+    padding: 26px 12px;
+    height: 100%;
+    top: 0;
+    right: -40px;
+    transition: .3s;
+    border-radius: 8px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.task-block-cnt:hover .edit-delete {
+    right: 0;
+    visibility: visible;
+    opacity: 1;
+}
+
+.task-edit {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.task-edit + .task-edit {
+    margin-top: 20px;
+}
+
+.task-edit img {
+    width: 100%;
+    height: 100%;
 }

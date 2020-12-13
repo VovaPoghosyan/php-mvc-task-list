@@ -15,6 +15,6 @@ Route::add('/tasks/cretae', 'Task@showCreateTask', 'get');
 Route::add('/tasks/create', 'Task@createTask', 'post');
 Route::add('/tasks/([0-9]*)/update', 'Task@showUpdateTask', 'get');
 Route::add('/tasks/([0-9]*)/update', 'Task@updateTask', 'post');
-Route::add('/tasks/([0-9]*)', 'Task@deleteTask', 'delete');
+Route::add('/tasks/([0-9]*)/delete', 'Task@deleteTask', 'delete');
 
 ?>
