@@ -15,8 +15,13 @@
             <a href="/"><img src="<?php echo App::baseUrl("assets/logo.png") ?>" alt="logo"></a>
         </div>
         <div class="login-reg-links">
-            <a href="/login">Login</a>
-            <a href="/registration">Register</a>
+            <?php if(Session::get('userId')) { ?>
+                <a href="/logout">Logout</a>
+            <?php } else { ?>
+                <a href="/login">Login</a>
+                <a href="/registration">Register</a>
+            <?php } ?>
+
         </div>
     </header>
     <?php echo $content; ?>

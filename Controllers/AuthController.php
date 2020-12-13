@@ -55,7 +55,12 @@ class AuthController extends Controller
             }
             Session::set("error_messages", $errorArr);
             Session::set("message_time", time());
-
+            Session::set("old_values", [
+                "firstname" => $firstname,
+                "lastname"  => $lastname,
+                "email"     => $email,
+                "gender"    => $gender
+            ]);
 
             if (!count($errorArr)) {
                 $hash_password = password_hash($password, PASSWORD_DEFAULT);
@@ -72,16 +77,10 @@ class AuthController extends Controller
                     die(mysqli_errno(User::getConn()));
                 }
             } else {
-                Session::set("old_values", [
-                    "firstname" => $firstname,
-                    "lastname"  => $lastname,
-                    "email"     => $email,
-                    "gender"    => $gender
-                ]);
                 return $this->redirect("registration");
             }
         } else {
-            $this->redirect("profile");
+            $this->redirect("tasks");
         }
     }
 
@@ -114,24 +113,29 @@ class AuthController extends Controller
             }
             Session::set("error_messages", $errorArr);
             Session::set("message_time", time());
+            Session::set("old_values", [
+                "email" => $email,
+            ]);
             if (!count($errorArr)) {
                 $currentUser = $user->get(false, ["id", "password"])->simple(["email" => $email])->query();
                 if (count($currentUser)) {
                     if (password_verify($password, $currentUser[0]['password'])) {
-                        die($currentUser['id']);
-                        Session::set("userId", $currentUser['id']);
-                        $this->redirect("profile");
+                        Session::set("userId", $currentUser[0]['id']);
+                        $this->redirect("tasks");
                     } else {
                         Session::set("password", "(write right password!)");
                     }
                 }
             }
-            Session::set("old_values", [
-                "email" => $email,
-            ]);
             $this->redirect("login");
         } else {
-            $this->redirect("profile");
+            $this->redirect("tasks");
         }
+    }
+
+    public function logoutAction()
+    {
+        Session::destroy();
+        $this->redirect("tasks");
     }
 }

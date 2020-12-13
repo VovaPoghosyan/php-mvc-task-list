@@ -5,6 +5,7 @@ Route::add('/', 'Task@getAllTasks', 'get');
 
 Route::add('/login', 'Auth@showLogin', 'get');
 Route::add('/login', 'Auth@login', 'post');
+Route::add('/logout', 'Auth@logout', 'get');
 
 Route::add('/registration', 'Auth@showRegistration', 'get');
 Route::add('/registration', 'Auth@registration', 'post');

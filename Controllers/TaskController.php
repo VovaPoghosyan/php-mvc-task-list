@@ -5,7 +5,7 @@ class TaskController extends Controller
     public function getAllTasksAction()
     {
         $task  = new Task();
-        $tasks = $task->get(false, ["title", "description", "created_by", "done"])->query();
+        $tasks = $task->get(false, ["title", "description", "created_by", "priority", "status"])->query();
 
         $this->render("tasks/index", ['tasks' => $tasks]);
     }
