@@ -7,7 +7,10 @@ class TaskController extends Controller
         $task  = new Task();
         $tasks = $task->get(false, ["id", "title", "description", "created_by", "priority", "status"])->query();
 
-        $this->render("tasks/index", ['tasks' => $tasks]);
+        $this->render("tasks/index", [
+            'tasks' => $tasks,
+            'isAdmin' => $this->isAdmin,
+        ]);
     }
 
     public function showCreateTaskAction()
@@ -149,10 +152,11 @@ class TaskController extends Controller
 
     public function deleteTaskAction($id)
     {
+        $this->checkAdmin();
         $task = new Task();
         $task->delete([
             'id' => $id
         ]);
-        $this->redirect("user/login");
+        $this->redirect("tasks");
     }
 }

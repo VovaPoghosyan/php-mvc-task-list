@@ -5,6 +5,27 @@ class Controller
     protected $layout = "main";
     public static $name;
 
+    protected $isAdmin = false;
+
+    public function __construct()
+    {
+        if ($id = Session::get('userId')) {
+            $user = new User();
+            $currentUser = $user->get(false, ["role"])->simple(["id" => $id])->query();
+            $isAdmin = isset($currentUser[0]) && $currentUser[0]['role'] === 'admin' ? true : false;
+        } else {
+            $isAdmin = false;
+        }
+        $this->isAdmin = $isAdmin;
+    }
+
+    public function checkAdmin()
+    {
+        if(!$this->isAdmin) {
+            $this->redirect("tasks"); 
+        }
+    }
+
     public function redirect($url)
     {
         $url_string = APP['SiteURL'] . $url;
@@ -16,7 +37,6 @@ class Controller
     {
         $sessionTime = Session::get($key . "_time");
         if($sessionTime && $sessionTime + 1 < time()) {
-            die('////');
             Session::set($type . "_" . $key, []);
         }
     }

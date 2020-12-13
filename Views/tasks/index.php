@@ -12,7 +12,7 @@
                         <button class="priority-status status"><?php echo $task['status'] ?></button>
                     </div>
                     <div class="edit-delete">
-                        <span class="task-edit"><a href="<?php echo '/tasks/' . $task['id'] . '/delete' ?>"><img src="<?php echo App::baseUrl('/assets/delete.svg') ?>" alt="delete"></a></span>
+                        <span class="task-edit <?php echo $isAdmin ? '' : 'disabled' ?>"><a href="<?php echo '/tasks/' . $task['id'] . '/delete' ?>"><img src="<?php echo App::baseUrl('/assets/delete.svg') ?>" alt="delete"></a></span>
                         <span class="task-edit"><a href="<?php echo '/tasks/' . $task['id'] . '/update' ?>"><img src="<?php echo App::baseUrl('/assets/edit.svg') ?>" alt="edit"></a></span>
                     </div>
                 </div>

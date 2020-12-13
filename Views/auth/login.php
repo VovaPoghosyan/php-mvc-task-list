@@ -15,7 +15,7 @@
             <div class="form">
                 <form name="basic" action="/login" method="POST">
                     <div class="form-item">
-                        <input type="email" name="email" value="<?php echo isset($old["email"]) ? $old["email"] : '' ?>">
+                        <input type="text" name="email" value="<?php echo isset($old["email"]) ? $old["email"] : '' ?>">
                         <span class="input-area-placeholder">Username</span>
                         <span class="error"><?php echo isset($error["email"]) ? $error["email"] : "" ?></span>
                     </div>

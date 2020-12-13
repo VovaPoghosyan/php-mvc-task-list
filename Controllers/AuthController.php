@@ -104,8 +104,6 @@ class AuthController extends Controller
             $errorArr = [];
             if (empty($email)) {
                 $errorArr["email"] = "(Please write your email address!)";
-            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errorArr["email"] = "(Please write correct email address!)";
             }
 
             if (empty($password)) {
