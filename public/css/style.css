@@ -155,6 +155,12 @@ header {
     -webkit-text-fill-color: transparent;
 }
 
+.form-item span.error {
+    color: red;
+    font-weight: 600;
+    font-size: 14px;
+}
+
 .forgot-psw {
     text-align: center;
 }

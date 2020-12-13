@@ -15,26 +15,33 @@
                 </span>
             </div>
             <div class="form">
+                
                 <form name="basic" action="/registration" method="POST">
                     <div class="form-item">
                         <input type="text" name="firstname">
                         <span class="input-area-placeholder">Firstname</span>
+                        <span class="error"><?php echo isset($error["firstname"]) ? $error["firstname"] : "" ?></span>
+                        
                     </div>
                     <div class="form-item">
                         <input type="text">
                         <span class="input-area-placeholder" name="lastname">Lastname</span>
+                        <span class="error"><?php echo isset($error["lastname"]) ? $error["lastname"] : "" ?></span>
                     </div>
                     <div class="form-item">
                         <input type="email" name="email">
                         <span class="input-area-placeholder">Email</span>
+                        <span class="error"><?php echo isset($error["email"]) ? $error["email"] : "" ?></span>
                     </div>
                     <div class="form-item">
                         <input type="password" name="password">
                         <span class="input-area-placeholder">Password</span>
+                        <span class="error"><?php echo isset($error["password"]) ? $error["password"] : "" ?></span>
                     </div>
                     <div class="form-item">
                         <input type="password" name="confPassword">
                         <span class="input-area-placeholder">Confirm Password</span>
+                        <span class="error"><?php echo isset($error["confPassword"]) ? $error["confPassword"] : "" ?></span>
                     </div>
                     <div class="form-item check-gender">
                         <p>Please select your gender:</p>

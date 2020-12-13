@@ -1,7 +1,7 @@
 <?PHP
 
 // Define base route
-Route::add('/', 'Index@index', 'get');
+Route::add('/', 'Task@getAllTasks', 'get');
 
 Route::add('/login', 'Auth@showLogin', 'get');
 Route::add('/login', 'Auth@login', 'post');

@@ -17,10 +17,12 @@
                     <div class="form-item">
                         <input type="email" name="email">
                         <span class="input-area-placeholder">Username</span>
+                        <span class="error"><?php echo isset($error["email"]) ? $error["email"] : "" ?></span>
                     </div>
                     <div class="form-item">
                         <input type="password" name="password">
                         <span class="input-area-placeholder">Password</span>
+                        <span class="error"><?php echo isset($error["password"]) ? $error["password"] : "" ?></span>
                     </div>
                     <div class="form-item">
                         <div class="submit-btn">

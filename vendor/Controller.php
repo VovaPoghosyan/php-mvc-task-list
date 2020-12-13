@@ -12,6 +12,14 @@ class Controller
         exit();
     }
 
+    public function checkErrorTime()
+    {
+        $messageTime = Session::get("message_time");
+        if($messageTime && $messageTime + 1 < time()) {
+            Session::set("error_messages", []);
+        }
+    }
+
     public function render($view, $params = array())
     {
         $view = trim($view);

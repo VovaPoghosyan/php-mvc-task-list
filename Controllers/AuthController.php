@@ -5,61 +5,55 @@ class AuthController extends Controller
 
     public function showRegistrationAction()
     {
-        $this->render("auth/registration");
+        $this->checkErrorTime();
+        $errorMessages = Session::get("error_messages");
+        $this->render("auth/registration", ['error' => $errorMessages ? $errorMessages : []]);
     }
 
     public function registrationAction()
     {
         if (!Session::get('userId')) {
             $user         = new User();
-            $error        = false;
             $firstname    = isset($_POST['firstname']) ? App::test_input($_POST['firstname']) : '';
             $lastname     = isset($_POST['lastname']) ? App::test_input($_POST['lastname']) : '';
             $email        = isset($_POST['email']) ? App::test_input($_POST['email']) : '';
             $password     = isset($_POST['password']) ? App::test_input($_POST['password']) : '';
             $confpassword = isset($_POST['confPassword']) ? App::test_input($_POST['confPassword']) : '';
             $gender       = isset($_POST['gender']) ? $_POST['gender'] : 'MALE';
+            $errorArr     = [];
 
             if (empty($firstname)) {
-                Session::set("firstname", "(Please write your first name!)");
-                $error = true;
+                $errorArr["firstname"] = "(Please write your first name!)";
             } elseif (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
-                Session::set("firstname", "(Please write correct first name!)");
-                $error = true;
+                $errorArr["firstname"] = "(Please write correct first name!)";
             }
 
             if (empty($lastname)) {
-                Session::set("lastname", "(Please write your last name!)");
-                $error = true;
+                $errorArr["lastname"] = "(Please write your last name!)";
             } elseif (!preg_match("/^[a-zA-Z ]*$/", $lastname)) {
-                Session::set("lastname", "(Please write correct last name!)");
-                $error = true;
+                $errorArr["lastname"] = "(Please write your last name!)";
             }
 
             if (empty($email)) {
-                Session::set("email", "(Please write your email address!)");
-                $error = true;
+                $errorArr["email"] = "(Please write your email address!)";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                Session::set("email", "(Please write correct email address!)");
-                $error = true;
+                $errorArr["email"] = "(Please write correct email address!)";
             } elseif (count($user->get()->simple(["email" => $email])->query()) > 0) {
-                Session::set("email", "(that email is busy!)");
-                $error = true;
+                $errorArr["email"] = "(that email is busy!)";
             }
 
             if (empty($password)) {
-                $error = true;
-                Session::set("password", "(Please write your password!)");
+                $errorArr["password"] = "(Please write your password!)";
             } elseif (empty($confpassword)) {
-                $error = true;
-                Session::set("password", "(Please write confirm password!)");
+                $errorArr["password"] = "(Please write confirm password!)";
             } elseif ($password != $confpassword) {
-                $error = true;
-                Session::set("confpassword", "(write correct confirm password!)");
+                $errorArr["confpassword"] = "(write correct confirm password!)";
             }
+            Session::set("error_messages", $errorArr);
+            Session::set("message_time", time());
 
 
-            if (!$error) {
+            if (!count($errorArr)) {
                 $hash_password = password_hash($password, PASSWORD_DEFAULT);
                 $data = [
                     "firstname" => $firstname,
@@ -83,29 +77,30 @@ class AuthController extends Controller
 
     public function showLoginAction()
     {
-        $this->render("auth/login");
+        $this->checkErrorTime();
+        $errorMessages = Session::get("error_messages");
+        $this->render("auth/login", ['error' => $errorMessages ? $errorMessages : []]);
     }
 
     public function loginAction()
     {
         if (!Session::get('userId')) {
             $user     = new User();
-            $error    = false;
             $email    = isset($_POST['email']) ? App::test_input($_POST['email']) : '';
             $password = isset($_POST['password']) ? App::test_input($_POST['password']) : '';
+            $errorArr = [];
             if (empty($email)) {
-                Session::set("email", "(Please write your email address!)");
-                $error = true;
+                $errorArr["email"] = "(Please write your email address!)";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                Session::set("email", "(Please write correct email address!)");
-                $error = true;
+                $errorArr["email"] = "(Please write correct email address!)";
             }
 
             if (empty($password)) {
-                $error = true;
-                Session::set("password", "(Please write your password!)");
+                $errorArr["password"] = "(Please write confirm password!)";
             }
-            if (!$error) {
+            Session::set("error_messages", $errorArr);
+            Session::set("message_time", time());
+            if (!count($errorArr)) {
                 $currentUser = $user->get(false, ["id", "password"])->simple(["email" => $email])->query();
                 if (count($currentUser)) {
                     if (password_verify($password, $currentUser[0]['password'])) {

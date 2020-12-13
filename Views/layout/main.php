@@ -12,7 +12,7 @@
 <body>
     <header>
         <div class="header-logo">
-            <a href="#"><img src="<?php echo App::baseUrl("assets/logo.png") ?>" alt="logo"></a>
+            <a href="/"><img src="<?php echo App::baseUrl("assets/logo.png") ?>" alt="logo"></a>
         </div>
         <div class="login-reg-links">
             <a href="/login">Login</a>
